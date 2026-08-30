@@ -36,4 +36,41 @@ SELECT
     event,
     itemid,
     event_time,
-    
+    DATE_DIFF('second', LAG(event_time) OVER
+    (
+        PARTITION BY visitorid 
+        ORDER BY event_time
+    ), event_time) AS gap_sec FROM
+    (
+    SELECT
+        visitorid,
+        event,
+        itemid,
+        to_timestamp(timestamp / 1000) AS event_time
+    FROM events
+    WHERE visitorid = 1150086
+    )
+ORDER BY event_time;
+
+WITH gaps AS (
+    SELECT
+        visitorid,
+        to_timestamp(timestamp / 1000) AS event_time,
+        DATE_DIFF('second',
+        LAG(to_timestamp(timestamp / 1000))
+        OVER
+        (
+            PARTITION BY visitorid
+            ORDER BY timestamp
+        ), to_timestamp(timestamp / 1000)
+        ) AS gap
+    FROM events
+)
+SELECT
+    MIN(gap) AS min_gap,
+    MAX(gap) AS max_gap,
+    APPROX_QUANTILE(gap, 0.5) AS median_gap,
+    APPROX_QUANTILE(gap, 0.9) AS p90_gap,
+    APPROX_QUANTILE(gap, 0.99) AS p99_gap
+FROM gaps
+WHERE gap IS NOT NULL;
