@@ -12,6 +12,8 @@ A funnel analysis measuring cart abandonment rate using real session-level event
 
 Unlike typical transactional e-commerce datasets (e.g. Olist), Retail Rocket logs raw behavioral events with no pre-built session identifier — session reconstruction was a required first step.
 
+![Retail Rocket - Cart Abandonment Rate Dashboard](Retail Rocket Cart Abandonment Analysis Dashboard.png)
+
 ## Methodology
 
 ### 1. Session Reconstruction
