@@ -1,5 +1,7 @@
 # Cart Abandonment Analysis — Retail Rocket Dataset
 
+![Retail Rocket - Cart Abandonment Rate Dashboard](Exports/Retail_Rocket_Cart_Abandonment_Analysis_Dashboard.png)
+
 ## Overview
 A funnel analysis measuring cart abandonment rate using real session-level event data (views, cart additions, purchases) from the [Retail Rocket e-commerce dataset](https://www.kaggle.com/datasets/retailrocket/ecommerce-dataset) on Kaggle. This project reconstructs user sessions from raw event logs, then calculates and segments cart abandonment rate to identify where and when drop-off happens.
 
@@ -11,8 +13,6 @@ A funnel analysis measuring cart abandonment rate using real session-level event
 - **category_tree.csv** — category hierarchy
 
 Unlike typical transactional e-commerce datasets (e.g. Olist), Retail Rocket logs raw behavioral events with no pre-built session identifier — session reconstruction was a required first step.
-
-![Retail Rocket - Cart Abandonment Rate Dashboard](Exports/Retail_Rocket_Cart_Abandonment_Analysis_Dashboard.png)
 
 ## Methodology
 
